@@ -6,9 +6,7 @@ Use um único comando printf() para isso. */
 
 int main() {
     char c, d, e;
-    c = getchar();
-    d = getchar();
-    e = getchar();
+    scanf("%c %c %c", &c, &d, &e);
     printf("%c\n%c\n%c", c, d, e);
     return 0; 
 }
