@@ -3,13 +3,12 @@ obtida pela equação: h = raiz quadrada (a * a)+(b * b);
 */
 
 #include <stdio.h>
+#include <math.h>
 
 int main() {
     float a, b, h;
-
     scanf("%f %f", &a, &b);
     h = (a * a) + (b * b);
-    printf("%f", h);
+    printf("%f", sqrt(h));
     return 0;
-}
-
+} 
