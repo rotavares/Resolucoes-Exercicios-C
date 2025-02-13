@@ -6,13 +6,14 @@ Número lido = 123 Número gerado = 321 */
 #include <stdio.h>
 
 int main() {
-    int n1, n2, n3, x;
-    scanf("%d", &x);
-    n1 = x / 1 % 10;
-    n2 = x / 10 % 10;
-    n3 = x / 100 % 10;
-    printf("%d", n1);
-    printf("%d", n2);
-    printf("%d", n3);
+    int unidade, dezena, centena, num;
+    scanf("%d", &num);
+    unidade = num/1%10;
+    dezena = num/10%10;
+    centena = num/100%10;
+    printf("Numero lido = %d\n", num);
+    printf("Numero gerado = %d", unidade);
+    printf("%d", dezena);
+    printf("%d", centena);
     return 0;
 }
