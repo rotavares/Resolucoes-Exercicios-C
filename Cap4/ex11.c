@@ -7,8 +7,8 @@ Saída = Abril. */
 int main() {
     int numero;
 
-    printf("Digite um numero de 1 a 12 para exibir mes: ");
-    numero = getchar();
+    printf("Digite um numero de 1 a 12 para exibir o mes: ");
+    scanf("%d", &numero);
     switch (numero)
     {
     case 1:
@@ -18,7 +18,7 @@ int main() {
         printf("Fevereiro\n");
         break;
     case 3:
-        printf("Março\n");
+        printf("Marco\n");
         break;
     case 4:
         printf("Abril\n");
