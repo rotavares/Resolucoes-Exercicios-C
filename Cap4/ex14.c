@@ -13,19 +13,21 @@ int main()
     {
         contagem++;
     }
-    if (num % 3 ==0)
+    if (num % 3 == 0)
     {
         contagem++;
     }
     if (contagem == 0)
     {
         printf("Este numero nao e divisivel por 3 ou 5.");
-    } else if (contagem == 1)
+    }
+    else if (contagem == 1)
     {
-        printf("Este numero e divisivel apenas por um dos numeros");   
-    } else 
+        printf("Este numero e divisivel apenas por um dos numeros");
+    }
+    else
     {
         printf("Este numero e divisivel pelo dois numeros");
     }
-    return 0;    
+    return 0;
 }
