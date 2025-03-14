@@ -7,6 +7,7 @@ int main () {
 int num, min, max;
     for (int i = 0; i < 10; i++)
     {
+        printf("%d# valor = ", i+1);
         scanf("%d", &num);
         if (i == 0)
         {
@@ -19,6 +20,6 @@ int num, min, max;
         if (max < num)
             max = num;
     }
-    printf("%d\n%d\n", min, max);
+    printf("menor = %d\nmaior = %d\n", min, max);
     return 0;
 }
