@@ -6,5 +6,15 @@ próprio. Exemplo: A soma dos divisores do número 66 é 1 + 2
 #include <stdio.h>
 
 int main() {
-    
+    int num, soma = 0;
+    scanf("%d", &num);
+    for (int i = 1; i <= num; i++)
+    {
+        if (num % i == 0)
+        {
+            soma += i;
+        }
+    }
+        soma = soma - num;
+     printf("soma dos divisores = %d", soma);
 }
