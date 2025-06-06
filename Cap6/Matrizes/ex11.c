@@ -8,7 +8,7 @@ int main()
     {
         for (int j = 0; j < 5; j++)
         {
-            if (i != j && i < 3)
+            if (i > j)
             {
                 soma += matriz[i][j];
             }
