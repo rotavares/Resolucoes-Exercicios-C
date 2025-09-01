@@ -17,15 +17,15 @@ int main() {
   float p;
   float d;
 
-  printf("Insira a largura do retângulo: ");
-  scanf("%f", &r.p1.x);
-  printf("Insira o comprimento do retângulo: ");
-  scanf("%f", &r.p2.y);
+  printf("Insira o ponto superior esquerdo: ");
+  scanf("%f%f", &r.p1.x, &r.p1.y);
 
-  a = r.p2.y * r.p1.x;
-  p = 2 * (r.p2.y + r.p1.x);
-  d = pow(r.p2.y, 2) + pow(r.p1.x, 2);
-  d = sqrt(d);
+  printf("Insira o ponto inferior direito: ");
+  scanf("%f%f", &r.p2.x, &r.p2.y);
+
+  a = (r.p1.y - r.p2.y) * (r.p1.x - r.p2.x);
+  p = ((r.p1.y - r.p2.y) + (r.p1.x - r.p2.x)) * 2;
+  d = sqrt((pow(r.p2.x - r.p1.x, 2) + pow(r.p2.y - r.p1.y, 2)));
 
   printf("Área = %.2f\n", a);
   printf("Perímetro = %.2f\n", p);
