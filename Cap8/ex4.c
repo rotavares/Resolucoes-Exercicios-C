@@ -1,27 +1,27 @@
 #include <stdio.h>
 #include <math.h>
 
-struct point {
+struct Point {
   float x;
   float y;
 };
 
-struct rectangle {
-  struct point p1;
-  struct point p2;
+struct Rectangle {
+  struct Point p1;
+  struct Point p2;
 };
 
 int main() {
-  struct rectangle r;
+  struct Rectangle r;
   float a;
   float p;
   float d;
 
   printf("Insira o ponto superior esquerdo: ");
-  scanf("%f%f", &r.p1.x, &r.p1.y);
+  scanf("%f%f", &r.p1.x, &r.p2.x);
 
   printf("Insira o ponto inferior direito: ");
-  scanf("%f%f", &r.p2.x, &r.p2.y);
+  scanf("%f%f", &r.p1.y, &r.p2.y);
 
   a = (r.p1.y - r.p2.y) * (r.p1.x - r.p2.x);
   p = ((r.p1.y - r.p2.y) + (r.p1.x - r.p2.x)) * 2;
