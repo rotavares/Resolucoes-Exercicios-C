@@ -6,10 +6,10 @@ struct Pessoa {
 };
 
 int main() {
-	struct Pessoa p[2];
-	int i, menor, maior, pmenor, pmaior;
+	struct Pessoa p[6];
+	int i, maiorIdade, menorIdade;
 
-	for (i = 0; i < 2; i++) {
+	for (i = 0; i < 6; i++) {
 		setbuf(stdin, NULL);
 		printf("%d#  Insira o nome: ", i + 1);
 		fgets(p[i].nome, 50, stdin);
@@ -21,25 +21,9 @@ int main() {
 		scanf("%d", &p[i].ano);
 	}
 	
-	for (i = 0; i < 2; i++) {
+	for (i = 0; i < 6; i++) {
 		if (i == 0) {
-			maior = p[i].ano;
-			menor = p[i].ano;
-		}
-
-		if (maior < p[i].ano) {
-			maior = p[i].ano;
-			pmaior = i;
-		}
-		else if (maior == p[i].ano) {
-			if (p[pmaior].mes < p[i].mes) {
-				pmaior = i;
-			}
-			else if (p[pmaior].mes = p[i].mes) {
-				if (p[pmaior].dia < p[i].dia) {
-					pmaior = i;
-				}
-			}
+			
 		}
 	}
 
