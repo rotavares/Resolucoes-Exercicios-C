@@ -1,24 +1,30 @@
+/* Crie uma estrutura para representar as coordenadas de um ponto no plano (posição X e Y). Em seguida, declare e leia do teclado um ponto e exiba a distância dele até a origem das coordenadas, isto é, a posição (0,0). */
+
 #include <stdio.h>
 #include <math.h>
 
-struct coordinates {
-  float x;
-  float y;
+struct Ponto {
+  double x;
+  double y;
 };
 
 int main() {
+  struct Ponto ponto;
+  double distancia;
 
-  struct coordinates c;
+  printf("Digite as coordenadas do ponto\n\n");
+  printf("X: ");
+  scanf("%lf", &ponto.x);
 
-  printf("Insira o valor de X: ");
-  scanf("%f", &c.x);
+  int c;
+  while ((c = getchar ()) != '\n' && c != EOF) {} // Limpa o buffer de entrada do teclado.
+
+  printf("Y: ");
+  scanf("%lf", &ponto.y);
+
+  distancia = sqrt(pow(ponto.x, 2) + pow(ponto.y, 2));
+
+  printf("\nDistancia do ponto a origem: %f\n", distancia);
   
-  printf("Insira o valor de Y: ");
-  scanf("%f", &c.y);
-
-  float d = sqrt((c.x * c.x) + (c.y * c.y));
-
-  printf("A distancia do ponto (%.1f, %.1f) até a origem (0,0) é de aproxidamente %.2f.\n", c.x, c.y, d);
-
   return 0;
 }

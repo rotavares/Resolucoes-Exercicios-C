@@ -1,35 +1,36 @@
+/* Crie uma estrutura para representar as coordenadas de um ponto no plano (posições X e Y). Em seguida, declare e leia do teclado dois pontos e exiba a distância entre eles. */
+
 #include <stdio.h>
 #include <math.h>
 
-struct coordinates {
-  float x;
-  float y;
-};
-
+struct Ponto {
+  double x;
+  double y;
+} ponto1, ponto2;
 
 int main() {
+  double distancia;
 
-  struct coordinates c1;
-  struct coordinates c2;
+  printf("Digite as coordenadas do primeiro ponto\n\n");
+  printf("X: ");
+  scanf("%lf", &ponto1.x);
 
-  printf("Primeiro ponto, insira o valor de X: ");
-  scanf("%f", &c1.x);
+  int c;
+  while ((c = getchar()) != '\n' && c != EOF)) {} // Limpa o buffer de entrada do teclado.
+  
+  printf("Y: ");
+  scanf("%lf", &ponto1.y);
 
-  printf("Primeiro ponto, insira o valor de Y: ");
-  scanf("%f", &c1.y);
+  while ((c = getchar()) != '\n' && c != EOF)) {} // Limpa o buffer de entrada do teclado.
 
-  printf("Segundo ponto, insira o valor de X: ");
-  scanf("%f", &c2.x);
+  printf("Digite as coordenadas do segundo ponto\n\n");
+  printf("X: ");
+  scanf("%lf", &ponto2.x);
 
-  printf("Segundo ponto, insira o valor de Y: ");
-  scanf("%f", &c2.y);
+  while ((c = getchar()) != '\n' && c != EOF)) // Limpa o buffer de entrada do teclado.
 
-  float dx = c2.x - c1.x;
-  float dy = c2.y - c1.y;
-  float d = pow(dx, 2) + pow(dy, 2);
-  d = sqrt(d);
-
-  printf("A distancia de (%.1f, %.1f) para (%.1f, %.1f) é aproximadamente %.2f\n", c1.x, c1.y, c2.x, c2.y, d);
+  printf("Y: ");
+  scanf("%lf", &ponto2.y);
 
   return 0;
 }

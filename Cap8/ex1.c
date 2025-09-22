@@ -1,34 +1,45 @@
-#include <stdio.h>
-#include <string.h>
+/* Implemente um programa que leia o nome, a idade e o endereço de uma pessoa e armazene esses dados em uma estrututura. Em seguida, imprima na tela os dados da estrutura lida. */
 
-struct Register {
-  char name[50];
-  int age;
-  char street[50];
-  int number;
+#include <stdio.h>
+
+struct Pessoa {
+  char nome[32];
+  unsigned idade;
+  char endereco[64];
 };
 
 int main() {
-
-  struct Register r;
-
-  printf("Digite o nome: ");
-  fgets(r.name,50,stdin);
-
-  printf("Digite a idade: ");
-  scanf("%d", &r.age);
-  setbuf(stdin, NULL);
+  struct Pessoa p;
   
-  printf("Informe o nome da rua: ");
-  fgets(r.street, 50, stdin);
+  printf("Digite seu nome: ");
+  fgets(p.nome, 32, stdin);
 
-  printf("Informe o número da rua: ");
-  scanf("%d", &r.number);
+  int strlen;
+  for (strlen = 0; p.nome[strlen] != '\0'; strlen++) {}
 
-  printf("Nome: %s", r.name);
-  printf("Idade: %d\n", r.age);
-  printf("Rua: %s", r.street);
-  printf("Número: %d", r.number);
+  if (p.nome[strlen-1] == '\n') {
+    p.nome[strlen-1] = '\0';
+  } else {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {} // Limpar o buffer de entrada do teclado.
+  }
+
+  printf("Digite sua idade: ");
+  scanf("%u", &p.idade);
+
+  int c;
+  while ((c = getchar()) != '\n' && c != EOF) {} // Limpar o buffer de entrada do teclado.
+
+  printf("Digite seu endreço: ");
+  fgets(p.endereco, 64, stdin);
+
+  for (strlen = 0; p.endereco[strlen] != '\0'; strlen++) {}
+  p.endereco[strlen-1] = '\0';
+
+  printf("Seus dados\n\n");
+  printf("\tNome: %s\n", p.nome);
+  printf("\tIdade: %u\n", p.idade);
+  printf("\tEndereço: %s\n", p.endereco);
 
   return 0;
 }
