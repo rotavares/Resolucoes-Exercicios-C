@@ -1,35 +1,44 @@
+/* Crie uma estrutura chamada Retângulo. Essa estrutura deverá conter o ponto superior esquerdo e ponto inferior direito do retângulo. Cada ponto é definido por uma estrutura Ponto, a qual contém as posições X e Y. Faça um programa que declare e leia uma estrutura Retângulo e exiba a área e o comprimento da diagonal e o perímetro desse retângulo. */
+
 #include <stdio.h>
 #include <math.h>
 
-struct Point {
-  float x;
-  float y;
+struct ponto {
+  double x;
+  double y;
 };
 
-struct Rectangle {
-  struct Point p1;
-  struct Point p2;
+struct retangulo {
+  struct ponto sup_esq;
+  struct ponto inf_dir;
 };
 
 int main() {
-  struct Rectangle r;
-  float a;
-  float p;
-  float d;
+  struct retangulo r;
 
-  printf("Insira o ponto superior esquerdo: ");
-  scanf("%f%f", &r.p1.x, &r.p2.x);
+  double area, comprimento_diagonal, perimetro;
 
-  printf("Insira o ponto inferior direito: ");
-  scanf("%f%f", &r.p1.y, &r.p2.y);
+  printf("Digite as coordenadas.\nSuperior esquerdo do retângulo\n (x, y): ");
+  scanf("%lf, %lf", &r.sup_esq.x, &r.sup_esq.y);
 
-  a = (r.p1.y - r.p2.y) * (r.p1.x - r.p2.x);
-  p = ((r.p1.y - r.p2.y) + (r.p1.x - r.p2.x)) * 2;
-  d = sqrt((pow(r.p2.x - r.p1.x, 2) + pow(r.p2.y - r.p1.y, 2)));
+  setbuf(stdin, NULL);
+  
+  printf("Digite as coordendas.\nInferior direito do retângulo\n (x, y): ");
+  scanf("%lf, %lf", &r.inf_dir.x, &r.inf_dir.y);
+ 
+  if (r.sup_esq.x >= r.inf_dir.x || r.sup_esq.y <= r.inf_dir.y) {
+    printf("Erro: As coordenadas fornecidas não forman um retângulo válido.\n");
+    return 1;
+  }
 
-  printf("Área = %.2f\n", a);
-  printf("Perímetro = %.2f\n", p);
-  printf("Comprimento da Diagonal = %.2f\n", d);
+  area = (r.inf_dir.x - r.sup_esq.x) * (r.sup_esq.y - r.inf_dir.y);
+  comprimento_diagonal = sqrt(pow(r.sup_esq.x - r.inf_dir.x, 2) + pow(r.sup_esq.y - r.inf_dir.y, 2));
+  perimetro = ((r.inf_dir.x - r.sup_esq.x) * 2) + ((r.sup_esq.y - r.inf_dir.y) * 2);
+  
+  printf("\nResultados\n");
+  printf("Área do retângulo: %f\n", area);
+  printf("Comprimento da diagonal do retângulo: %f\n", comprimento_diagonal);
+  printf("Perímetro do retângulo: %f\n", perimetro);
 
   return 0;
 }

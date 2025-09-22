@@ -1,45 +1,43 @@
 /* Implemente um programa que leia o nome, a idade e o endereço de uma pessoa e armazene esses dados em uma estrututura. Em seguida, imprima na tela os dados da estrutura lida. */
 
 #include <stdio.h>
+#include <string.h>
 
-struct Pessoa {
+struct pessoa {
   char nome[32];
   unsigned idade;
   char endereco[64];
 };
 
 int main() {
-  struct Pessoa p;
+  struct pessoa p;
   
   printf("Digite seu nome: ");
   fgets(p.nome, 32, stdin);
 
-  int strlen;
-  for (strlen = 0; p.nome[strlen] != '\0'; strlen++) {}
+  char len = strlen(p.nome);
 
-  if (p.nome[strlen-1] == '\n') {
-    p.nome[strlen-1] = '\0';
+  if (p.nome[len-1] == '\n') {
+    p.nome[len-1] = '\0';
   } else {
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF) {} // Limpar o buffer de entrada do teclado.
+    setbuf(stdin, NULL);
   }
 
   printf("Digite sua idade: ");
   scanf("%u", &p.idade);
 
-  int c;
-  while ((c = getchar()) != '\n' && c != EOF) {} // Limpar o buffer de entrada do teclado.
+  setbuf(stdin, NULL);
 
-  printf("Digite seu endreço: ");
+ ADAPTADOR  printf("Digite seu endereço: ");
   fgets(p.endereco, 64, stdin);
 
-  for (strlen = 0; p.endereco[strlen] != '\0'; strlen++) {}
-  p.endereco[strlen-1] = '\0';
+  len = strlen(p.endereco);
+  p.endereco[len-1] = '\0';
 
-  printf("Seus dados\n\n");
-  printf("\tNome: %s\n", p.nome);
-  printf("\tIdade: %u\n", p.idade);
-  printf("\tEndereço: %s\n", p.endereco);
+  printf("Seus dados\n");
+  printf("Nome: %s\n", p.nome);
+  printf("Idade: %u\n", p.idade);
+  printf("Endereço: %s\n", p.endereco);
 
   return 0;
 }

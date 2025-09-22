@@ -1,51 +1,68 @@
+/* Crie uma estrutura representando um aluno de uma disciplina. Essa estrutura deve conter o número de matrícula do aluno, seu nome e as notas de três provas. Agora, escreva um programa que leia os dados de cinco alunos e os armazene nessa estrutura. Em seguida, exiba o nome e as notas do aluno e os armazene nessa estrutura. Em seguida, exiba o nome e as notas do aluno que possui a maior média geral dentre os cinco. */
+
 #include <stdio.h>
 #include <string.h>
 
-#define TIMES 2
+#define QUANTIDADE_ALUNOS 5
 
-struct Student {
-  int enrolment;
-  char name[50];
-  float first, second, third;
+struct aluno {
+  unsigned matricula;
+  char nome[32];
+  double nota1, nota2, nota3, media;
 };
 
 int main() {
-  int i, p;
-  float a[TIMES], high;
+  struct aluno a[QUANTIDADE_ALUNOS] = {0};
 
-  struct Student s[TIMES];
-  for (i = 0; i < TIMES; i++) {
-    printf("%d° Aluno > Número Matrícula: ", i + 1);
-    scanf("%d", &s[i].enrolment);
-    setbuf(stdin ,NULL);
-    printf("%d° Aluno > Nome: ", i + 1);
-    fgets(s[i].name, 50, stdin);
-    s[i].name[strlen(s[i].name) - 1] = '\0';
-    printf("%dº Aluno > Primeira nota: ", 1 + i);
-    scanf("%f", &s[i].first);
-    printf("%dº Aluno > Segunda nota: ", 1 + i);
-    scanf("%f", &s[i].second);
-    printf("%dº Aluno > Terceira nota: ", 1 + i);
-    scanf("%f", &s[i].third);
-  }
+  unsigned maior_nota = 0;
 
-  
+  for (int i = 0; i < QUANTIDADE_ALUNOS; i++) {
+    printf("\nNúmero da matrícula: ");
+    scanf("%d", &a[i].matricula);
+    setbuf(stdin, NULL);
 
-  for (i = 0; i < TIMES; i++) {
-    a[i] = (s[i].first + s[i].second + s[i].third) / 3;
-  }
-  
-  for (i = 0; i < TIMES; i++) {
-    if (i == 0) {
-      high == a[i];
+
+    printf("Nome do aluno: ");
+    fgets(a[i].nome, 32, stdin);
+
+
+    char len = strlen(a[i].nome);
+
+    if (a[i].nome[len-1] == '\n') {
+      a[i].nome[len-1] = '\0';
+    } else {
+      setbuf(stdin, NULL);
     }
-    if (a[i] > high) {
-      high = a[i];
-      p = i;
+
+    printf("Nota da prova 1: ");
+    scanf("%lf", &a[i].nota1);
+    setbuf(stdin, NULL);
+
+
+    printf("Nota da prova 2: ");
+    scanf("%lf", &a[i].nota2);
+    setbuf(stdin, NULL);
+
+    printf("Nota da prova 3: ");
+    scanf("%lf", &a[i].nota3);
+    setbuf(stdin, NULL);
+
+    a[i].media = (a[i].nota1 + a[i].nota2 + a[i].nota3) / 3;
+  }
+
+  for (int i = 0; i < QUANTIDADE_ALUNOS; i++) {
+    if (a[i].media > a[maior_nota].media) {
+      maior_nota = i;
     }
   }
 
-  printf("Nome: %s\nNotas: %.2f - %.2f - %.2f\nMédia: %.2f", s[p].name, s[p].first, s[p].second, s[p].third, high);
+  printf("\nAluno com a maior média\n");
+  printf("Nome: %s\n", a[maior_nota].nome);
+  printf("Matrícula: %u\n", a[maior_nota].matricula);
+  printf("Prova 1: %.2f\n", a[maior_nota].nota1);
+  printf("Prova 2: %.2f\n", a[maior_nota].nota2);
+  printf("Prova 3: %.2f\n", a[maior_nota].nota3);
+  printf("Média: %.2f\n", a[maior_nota].media);
 
   return 0;
 }

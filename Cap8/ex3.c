@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <math.h>
 
-struct Ponto {
+struct ponto {
   double x;
   double y;
 } ponto1, ponto2;
@@ -11,26 +11,19 @@ struct Ponto {
 int main() {
   double distancia;
 
-  printf("Digite as coordenadas do primeiro ponto\n\n");
-  printf("X: ");
-  scanf("%lf", &ponto1.x);
+  printf("Digite as coordenadas do primeiro ponto\n");
+  printf("(x, y): ");
+  scanf("%lf, %lf", &ponto1.x, &ponto1.y);
 
-  int c;
-  while ((c = getchar()) != '\n' && c != EOF)) {} // Limpa o buffer de entrada do teclado.
-  
-  printf("Y: ");
-  scanf("%lf", &ponto1.y);
+  setbuf(stdin, NULL);
 
-  while ((c = getchar()) != '\n' && c != EOF)) {} // Limpa o buffer de entrada do teclado.
+  printf("Digite as coordenadas do segundo ponto\n");
+  printf("(x, y): ");
+  scanf("%lf, %lf", &ponto2.x, &ponto2.y);
 
-  printf("Digite as coordenadas do segundo ponto\n\n");
-  printf("X: ");
-  scanf("%lf", &ponto2.x);
+  distancia = sqrt(pow(ponto1.x - ponto2.x, 2) + pow(ponto1.y - ponto2.y, 2));
 
-  while ((c = getchar()) != '\n' && c != EOF)) // Limpa o buffer de entrada do teclado.
-
-  printf("Y: ");
-  scanf("%lf", &ponto2.y);
+  printf("Distancia entre os dois pontos: %f\n", distancia);
 
   return 0;
 }
