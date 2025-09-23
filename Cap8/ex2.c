@@ -4,21 +4,21 @@
 #include <math.h>
 
 struct ponto {
-  double x;
-  double y;
+    double x;
+    double y;
 };
 
 int main() {
-  struct ponto p;
-  double distancia;
+    struct ponto p;
+    double distancia;
 
-  printf("Digite as coordenadas do ponto\n\n");
-  printf("(x, y): ");
-  scanf("%lf, %lf", &p.x, &p.y);
+    printf("Digite as coordenadas do ponto\n\n");
+    printf("(x, y): ");
+    scanf("%lf, %lf", &p.x, &p.y);
   
-  distancia = sqrt(pow(p.x, 2) + pow(p.y, 2));
+    distancia = sqrt(pow(p.x, 2) + pow(p.y, 2));
 
-  printf("Distancia do ponto a origem: %f\n", distancia);
+    printf("Distancia do ponto a origem: %f\n", distancia);
   
-  return 0;
+    return 0;
 }

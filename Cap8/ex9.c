@@ -1,57 +1,68 @@
-#include <stdio.h>
+/* Crie uma estrutura representando um atleta. Essa estrutura deve conter o nome do atleta, seu esporte, idade e altura Agora, escreva um programa que leia os dados de cinco atletas. Calcule e exiba os nomes do atleta mais alto e do mais velho. */
 
-struct Atleta {
-  char nome[50];
-  char esporte[20];
-  int dia, mes, ano;
-  float altura;
+#include <stdio.h>
+#include <string.h>
+
+#define QTD_ATLETAS 5
+
+struct atleta {
+    char nome[32];
+    char esporte[16];
+    unsigned short idade;
+    double altura;
 };
 
 int main() {
-  struct Atleta a[5];
-  int i, maisAlto, maisVelho;
+    struct atleta a[QTD_ATLETAS] = {0};
 
-  for (i = 0; i < 5; i++) {
-    printf("%d#  insira o nome: ", i + 1);
-    fgets(a[i].nome, 50, stdin);
-    printf("esporte praticado: ");
-    fgets(a[i].esporte, 20, stdin);
-    printf("nascimento: ");
-    scanf("%d%d%d", &a[i].dia, &a[i].mes, &a[i].ano);
-    printf("altura: ");
-    scanf("%f", &a[i].altura);
-    setbuf(stdin, NULL);
-  }
+    printf("Digite os dados dos atletas\n");
 
-  for (i = 0; i < 5; i++) {
+    for (int i = 0; i < QTD_ATLETAS; i++) {
+        printf("\t--- #%d Cadastro ---\n", i+1);
 
-    if (i == 0) {
-      maisVelho = i;
-      maisAlto = i;
-    }
+        printf("\tNome: ");
+        fgets(a[i].nome, 32, stdin);
 
-    if (a[maisVelho].ano > a[i].ano) {
-      maisVelho = i;
-    }
-    else if (a[maisVelho].ano == a[i].ano) {
-
-      if (a[maisVelho].mes > a[i].mes) {
-        maisVelho = i;
-      }
-      else if (a[maisVelho].mes == a[i].mes) {
-        maisVelho = i;
-
-        if (a[maisVelho].dia > a[i].dia) {
-          maisVelho = i;
+        int len = strlen(a[i].nome);
+        if (a[i].nome[len-1] == '\n' ) {
+            a[i].nome[len-1] = '\0';
+        } else {
+            setbuf(stdin, NULL);
         }
-      }
-    }
 
-    if (a[maisAlto].altura < a[i].altura) {
-      maisAlto = i;
-    }
+        printf("\tEsporte: ");
+        fgets(a[i].esporte, 16, stdin);
 
-  }
-  printf("Mais Velho: %sMais Alto: %s", a[maisVelho].nome, a[maisAlto].nome);
-  return 0;
+        len = strlen(a[i].esporte);
+        if (a[i].esporte[len-1] == '\n' ) {
+            a[i].esporte[len-1] = '\0';
+        } else {
+            setbuf(stdin, NULL);
+        }
+
+        printf("\tIdade: ");
+        scanf("%hu", &a[i].idade);
+        setbuf(stdin, NULL);
+        
+        printf("\tAltura: ");
+        scanf("%lf", &a[i].altura);
+        setbuf(stdin, NULL);
+    }
+        int mais_alto = 0;
+        int mais_velho = 0;
+
+    for (int i = 0; i < QTD_ATLETAS; i++) {
+        if (a[i].altura > a[mais_alto].altura) {
+            mais_alto = i;
+        }
+
+        if (a[i].idade > a[mais_velho].idade) {
+            mais_velho = i;
+        }
+    }
+    
+    printf("Atleta mais alto: %s\n", a[mais_alto].nome);
+    printf("Atleta mais velho: %s\n", a[mais_velho].nome);
+    
+    return 0;
 }
